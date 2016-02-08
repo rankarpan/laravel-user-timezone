@@ -279,7 +279,7 @@ class BlogController extends APIController {
 
         $userTimezone = $this->getUserTimeZone();
 
-        $session = Carbon::createFromFormat('Y-m-d H:i:s', $datetime)->format('Y-m-d H:i:s');
+        $session = Carbon::createFromFormat('Y-m-d H:i:s', $this->convertTimeToUTCzone($datetime))->format('Y-m-d H:i:s');
         $timezone_utc = Carbon::createFromFormat('Y-m-d H:i:s', $this->convertTimeToUTCzone($datetime))->format('D j F Y H:i:s e');
         $timezone = Carbon::createFromFormat('Y-m-d H:i:s', $this->convertTimeToUSERzone($session), $userTimezone)->format('D j F Y H:i:s e');
 
