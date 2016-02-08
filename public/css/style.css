@@ -1,0 +1,25 @@
+.h1, .h2 {
+	margin: 0;
+}
+
+.h1 {
+	font-size: 32px;
+}
+
+.h2 {
+	font-size: 24px
+}
+
+#id-card {
+	text-align: center;
+	width: 437px;
+	height: 620px;
+	margin: 30px auto;
+	padding: 15px;
+	background-color: #CCC;
+}
+
+#id-card img.user-photo {
+	height: 220px;
+	margin: 10px auto;
+}
