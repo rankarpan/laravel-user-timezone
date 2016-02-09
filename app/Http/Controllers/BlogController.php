@@ -27,6 +27,9 @@ use DateTime;
 use DateTimeZone;
 use Input;
 
+use TimeZoneConverter;
+use Cookie;
+
 class BlogController extends APIController {
 
     public function getBlog()
@@ -277,17 +280,22 @@ class BlogController extends APIController {
         //$datetime = '2016-02-07 23:39:00';
         $datetime = Input::get('datetime');
 
-        $userTimezone = $this->getUserTimeZone();
+        $userTimezone = Cookie::get('userTimezone');
+        
+        if (empty($userTimezone))
+        {
+            $userTimezone = $this->getUserTimeZone();
+        }
 
-        $session = Carbon::createFromFormat('Y-m-d H:i:s', $this->convertTimeToUTCzone($datetime))->format('Y-m-d H:i:s');
-        $timezone_utc = Carbon::createFromFormat('Y-m-d H:i:s', $this->convertTimeToUTCzone($datetime))->format('D j F Y H:i:s e');
-        $timezone = Carbon::createFromFormat('Y-m-d H:i:s', $this->convertTimeToUSERzone($session), $userTimezone)->format('D j F Y H:i:s e');
+        $session = Carbon::createFromFormat('Y-m-d H:i:s', TimeZoneConverter::convertToUTCzone($datetime))->format('Y-m-d H:i:s');
+        $timezone_utc = Carbon::createFromFormat('Y-m-d H:i:s', TimeZoneConverter::convertToUTCzone($datetime))->format('D j F Y H:i:s e');
+        $timezone = Carbon::createFromFormat('Y-m-d H:i:s', TimeZoneConverter::convertFromUTCzone($session), $userTimezone)->format('D j F Y H:i:s e');
 
         $content = view('sections.timezone-ajax', compact('timezone', 'timezone_utc'))->render();
 
         return json_encode(array(
             'status'    =>  'success',
-            'data'      =>  $datetime,
+            'data'      =>  $userTimezone,
             'updateExtra' => true, 
             'content' => $content,
             'affectedElement' => '.panel-footer'

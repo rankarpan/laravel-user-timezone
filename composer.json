@@ -51,7 +51,8 @@
             "app/filters"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "TarunMangukiya\\TimeZoneConverter\\": "packages/tarunmangukiya/laravel-user-timezone/src"
         }
     },
     "autoload-dev": {

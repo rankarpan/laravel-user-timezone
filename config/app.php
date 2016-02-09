@@ -159,6 +159,7 @@ return [
         Anam\PhantomMagick\ConverterServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Liebig\Cron\Laravel5ServiceProvider::class,
+        TarunMangukiya\TimeZoneConverter\TimeZoneConverterServiceProvider::class,
         //Mmanos\Search\SearchServiceProvider::class,
 
     ],
@@ -221,6 +222,7 @@ return [
         'HTMLMin'   => GrahamCampbell\HTMLMin\Facades\HTMLMin::class,
         'Converter' => Anam\PhantomMagick\Facades\Converter::class,
         'PDF'       => Barryvdh\DomPDF\Facade::class,
+        'TimeZoneConverter' => TarunMangukiya\TimeZoneConverter\Facades\TimeZoneConverter::class,
         //'Search'    => Mmanos\Search\Facade::class,
 
 

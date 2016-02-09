@@ -1,0 +1,13 @@
+{
+    "name": "tarunmangukiya/laravel-open-weather-map",
+    "description": "Laravel 5 Package for OpenWeatherMap forecasting (derived from torann/laravel-weather).",
+    "type": "stand-alone",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tarun Mangukiya",
+            "email": "tarunmangukiya@hotmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
